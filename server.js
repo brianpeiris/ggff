@@ -88,9 +88,9 @@ app.get("/:id", async (req, res) => {
   }
 });
 
-const url = process.env.MONGODB_URI || "mongodb://localhost:27017";
+const url = process.env.MONGODB_URI || "mongodb://localhost:27017/ggff";
 MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, async (err, client) => {
   console.log("Connected successfully to mongo");
-  db = client.db("ggff");
+  db = client.db();
   app.listen(port, () => console.log(`App listening on port ${port}!`));
 });
