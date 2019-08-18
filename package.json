@@ -2,7 +2,9 @@
   "private": true,
   "scripts": {
     "dev": "babel -w server.js -d build",
-    "start": "nodemon"
+    "dev:server": "nodemon",
+    "build": "babel server.js -d build",
+    "start": "node build/server.js"
   },
   "main": "build/server.js",
   "dependencies": {
