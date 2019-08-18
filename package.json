@@ -1,0 +1,22 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "babel -w server.js -d build",
+    "start": "nodemon"
+  },
+  "main": "build/server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^3.3.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-transform-react-jsx": "^7.3.0",
+    "ava": "^2.2.0",
+    "nodemon": "^1.19.1",
+    "prettier": "^1.18.2"
+  }
+}

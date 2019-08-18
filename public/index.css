@@ -1,0 +1,23 @@
+body, body * {
+  font-size: 12pt;
+  font-family: sans-serif;
+}
+
+input {
+  width: 30em;
+}
+
+h1 a {
+  display: block;
+  text-decoration: none;
+  color: black;
+  font-size: 16pt;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  padding-top: 1em;
+  text-align: center;
+  line-height: 2em;
+}
