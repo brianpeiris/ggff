@@ -1,7 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "dev": "babel -w server.js -d build",
+    "dev": "concurrently 'npm:dev:*'",
+    "dev:babel": "babel -w server.js -d build",
     "dev:server": "nodemon",
     "build": "babel server.js -d build",
     "start": "node build/server.js"
@@ -18,6 +19,7 @@
     "@babel/core": "^7.5.5",
     "@babel/plugin-transform-react-jsx": "^7.3.0",
     "ava": "^2.2.0",
+    "concurrently": "^4.1.2",
     "nodemon": "^1.19.1",
     "prettier": "^1.18.2"
   }

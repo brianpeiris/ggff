@@ -10,6 +10,8 @@ const appTemplate = fs.readFileSync(cwd + "/index.html", "utf8");
 
 const app = express();
 const port = process.env.PORT || 3000;
+const mongoUri = process.env.MONGODB_URI || "mongodb://localhost:27017/ggff";
+
 let db;
 
 app.use(express.static("public"));
@@ -54,18 +56,22 @@ async function pruneExpired() {
   });
 }
 
-app.get("/", async (req, res) => {
-  renderApp(<CreateForm />, res);
-});
-
-app.post("/create", async (req, res) => {
+async function createLink(url, res) {
   await pruneExpired();
-  const { url } = req.body;
   const links = db.collection("links");
   const currentCount = await links.countDocuments({});
   const id = generateId(currentCount);
   await links.insertOne({ id, url, expires: Date.now() + 11 * 60 * 1000 });
   res.redirect(`/${id}+`);
+}
+
+app.get("/", async (req, res) => {
+  renderApp(<CreateForm />, res);
+});
+
+app.post("/create", async (req, res) => {
+  const { url } = req.body;
+  await(createLink(url, res));
 });
 
 app.get("/:id([^+]+)\\+", async (req, res) => {
@@ -88,8 +94,15 @@ app.get("/:id", async (req, res) => {
   }
 });
 
-const url = process.env.MONGODB_URI || "mongodb://localhost:27017/ggff";
-MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, async (err, client) => {
+app.get("/*", async (req, res) => {
+  await createLink(req.path.substring(1), res);
+});
+
+MongoClient.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true }, async (err, client) => {
+  if (err) {
+    console.error(err);
+    return;
+  }
   console.log("Connected successfully to mongo");
   db = client.db();
   app.listen(port, () => console.log(`App listening on port ${port}!`));
