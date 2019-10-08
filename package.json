@@ -1,11 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "dev": "concurrently 'npm:dev:*'",
-    "dev:babel": "babel -w server.js -d build",
-    "dev:server": "nodemon",
-    "build": "babel server.js -d build",
-    "start": "node build/server.js"
+    "build": "babel src -d api"
   },
   "main": "build/server.js",
   "dependencies": {
