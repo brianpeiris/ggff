@@ -1,12 +1,17 @@
 {
   "private": true,
   "scripts": {
-    "build": "babel src -d api"
+    "dev:babel": "babel -w --ignore 'api/**/*' -d api src",
+    "dev:now": "now dev",
+    "start": "concurrently 'npm:dev:*'",
+    "prod": "babel src -d api"
   },
   "main": "build/server.js",
   "dependencies": {
+    "concurrently": "^5.1.0",
     "express": "^4.17.1",
     "mongodb": "^3.3.0",
+    "now": "^17.0.4",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
   },
@@ -15,7 +20,6 @@
     "@babel/core": "^7.5.5",
     "@babel/plugin-transform-react-jsx": "^7.3.0",
     "ava": "^2.2.0",
-    "concurrently": "^4.1.2",
     "nodemon": "^1.19.1",
     "prettier": "^1.18.2"
   }

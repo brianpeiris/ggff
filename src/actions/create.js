@@ -24,11 +24,11 @@ async function createLink(url, res) {
   const id = generateId(currentCount);
   await links.insertOne({ id, url, expires: Date.now() + 11 * 60 * 1000 });
   res.status(302);
-  res.setHeader('location', `/${id}+`);
+  res.setHeader("location", `/${id}+`);
   res.send();
 }
 
 module.exports = async (req, res) => {
   const { url } = req.body;
-  await(createLink(url, res));
-}
+  await createLink(url, res);
+};

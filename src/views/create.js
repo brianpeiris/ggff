@@ -24,7 +24,7 @@ module.exports = (req, res) => {
         <div>{contents}</div>
       </main>
     )
-  )
+  );
 
-  res.status(200).send(view)
-}
+  res.status(200).send(view);
+};
