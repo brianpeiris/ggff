@@ -8,7 +8,8 @@ function LinkInfo({ id, url, expires }) {
   const minutesLeft = Math.floor((expires - Date.now()) / 1000 / 60);
   return (
     <>
-    <a href={`/${id}`}>ggff.io/{id}</a> expires in {minutesLeft} minutes.<br />
+      <a href={`/${id}`}>ggff.io/{id}</a> expires in {minutesLeft} minutes.
+      <br />
       It points to <a href={url}>{url}</a>.
     </>
   );
