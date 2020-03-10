@@ -1,30 +1,16 @@
 const React = require("react");
-const ReactDOMServer = require("react-dom/server");
 
-const fs = require("fs");
-const cwd = process.cwd();
-const appTemplate = fs.readFileSync(cwd + "/index.html", "utf8");
+const { renderApp } = require("./shared.js");
 
 function CreateForm() {
   return (
-    <form action="/api/actions/create" method="post">
-      <input type="text" name="url" placeholder="Enter a URL" />
+    <form action="/api/actions/create" method="get">
+      <input type="text" name="url" placeholder="Enter a URL" autoFocus />
       <button type="submit">shorten</button>
     </form>
   );
 }
 
 module.exports = (req, res) => {
-  const contents = <CreateForm />;
-
-  const view = appTemplate.replace(
-    "<!--CONTENTS-->",
-    ReactDOMServer.renderToStaticMarkup(
-      <main>
-        <div>{contents}</div>
-      </main>
-    )
-  );
-
-  res.status(200).send(view);
+  res.status(200).send(renderApp(<CreateForm />));
 };

@@ -1,20 +1,6 @@
-const { MongoClient } = require("mongodb");
 const cwd = process.cwd();
+const { getDB, pruneExpired } = require(cwd + "/db.js");
 const { generateId } = require(cwd + "/utils.js");
-
-const mongoUri = process.env.MONGODB_URI || "mongodb://localhost:27017/ggff";
-
-async function getDB() {
-  const client = await MongoClient.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true });
-  return client.db();
-}
-
-async function pruneExpired() {
-  const db = await getDB();
-  const { deletedCount } = await db.collection("links").deleteMany({
-    expires: { $lt: Date.now() }
-  });
-}
 
 async function createLink(url, res) {
   await pruneExpired();
@@ -29,6 +15,6 @@ async function createLink(url, res) {
 }
 
 module.exports = async (req, res) => {
-  const { url } = req.body;
+  const { url } = req.query;
   await createLink(url, res);
 };
