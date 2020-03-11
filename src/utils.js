@@ -12,10 +12,10 @@ function generateId(currentCount) {
   while (capacity <= currentCount) {
     charCount++;
     if (charCount % 2 === 0) {
-      capacity *= 5;
+      capacity *= vowels.length;
       id += choose(vowels);
     } else {
-      capacity *= 21;
+      capacity *= consonants.length;
       id += choose(consonants);
     }
   }

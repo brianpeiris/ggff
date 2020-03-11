@@ -5,19 +5,56 @@ body, body * {
 
 input {
   width: 30em;
+  max-width: 90vw;
+  height: 2em;
+  font-size: 12pt;
+  text-align: center;
+}
+button {
+  height: 2em;
+  width: 8em;
+  margin: 0.5em;
+  font-size: 12pt;
+  display: block;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 h1 a {
-  display: block;
+  display: inline;
   text-decoration: none;
   color: black;
-  font-size: 16pt;
+  font-size: 18pt;
 }
 
-main {
+h1 {
+  display: block;
+  margin-bottom: 0;
+}
+
+.tagline {
+  margin-bottom: 2em;
+  font-size: 10pt;
+  color: grey;
+}
+
+p {
+  margin-top: 2em;
+  font-size: 10pt;
+}
+
+body {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   padding-top: 1em;
   text-align: center;
   line-height: 2em;
+}
+
+.info-link {
+  word-break: break-word;
 }

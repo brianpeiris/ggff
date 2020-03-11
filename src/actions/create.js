@@ -1,6 +1,5 @@
-const cwd = process.cwd();
-const { getDB, pruneExpired } = require(cwd + "/db.js");
-const { generateId } = require(cwd + "/utils.js");
+const { getDB, pruneExpired } = require("../db.js");
+const { generateId } = require("../utils.js");
 
 async function createLink(url, res) {
   await pruneExpired();
@@ -8,7 +7,7 @@ async function createLink(url, res) {
   const links = db.collection("links");
   const currentCount = await links.countDocuments({});
   const id = generateId(currentCount);
-  await links.insertOne({ id, url, expires: Date.now() + 11 * 60 * 1000 });
+  await links.insertOne({ id, url, expires: Date.now() + 2 * 60 * 1000 });
   res.status(302);
   res.setHeader("location", `/${id}+`);
   res.send();

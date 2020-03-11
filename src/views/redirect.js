@@ -1,8 +1,8 @@
-const cwd = process.cwd();
-const { getDB } = require(cwd + "/db.js");
+const { getDB, pruneExpired } = require("../db.js");
 const { renderApp } = require("./shared.js");
 
 module.exports = async (req, res) => {
+  await pruneExpired();
   const id = req.url.substring(1);
   const db = await getDB();
   const { url } = (await db.collection("links").findOne({ id })) || {};
