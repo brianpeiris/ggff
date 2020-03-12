@@ -22,4 +22,4 @@ function generateId(currentCount) {
   return id;
 }
 
-module.exports = { generateId };
+module.exports = { choose, generateId };

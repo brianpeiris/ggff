@@ -5,14 +5,7 @@ const fs = require("fs");
 const appTemplate = fs.readFileSync(__dirname + "/../../index.html", "utf8");
 
 function renderApp(contents) {
-  return appTemplate.replace(
-    "<!--CONTENTS-->",
-    ReactDOMServer.renderToStaticMarkup(
-      <main>
-        {contents}
-      </main>
-    )
-  );
+  return appTemplate.replace("<!--CONTENTS-->", ReactDOMServer.renderToStaticMarkup(<main>{contents}</main>));
 }
 
 module.exports = {

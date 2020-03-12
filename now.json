@@ -3,8 +3,11 @@
     { "src": "/index.css", "dest": "/index.css" },
     { "src": "/favicon.ico", "dest": "/favicon.ico" },
     { "src": "/api/actions/create", "dest": "/api/actions/create.js" },
-    { "src": "/(?<url>https?://.+)", "dest": "/api/actions/create?url=$url" },
-    { "src": "/[^+]+\\+$", "dest": "/api/views/info.js" },
+    { "src": "/enter", "dest": "/api/views/enter.js" },
+    { "src": "/info", "dest": "/api/views/info.js" },
+    { "src": "/(?<url>https?:/.+)", "dest": "/api/actions/create?url=$url" },
+    { "src": "/(?<url>.+\\..+)", "dest": "/api/actions/create?url=$url" },
+    { "src": "/[^+]+\\+$", "dest": "/api/views/plus.js" },
     { "src": "/[^+]+", "dest": "/api/views/redirect.js" },
     { "src": "/", "dest": "/api/views/create.js" }
   ]

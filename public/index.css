@@ -37,13 +37,18 @@ h1 {
 
 .tagline {
   margin-bottom: 2em;
-  font-size: 10pt;
+  font-size: 11pt;
   color: grey;
 }
 
 p {
   margin-top: 2em;
-  font-size: 10pt;
+  font-size: 11pt;
+}
+
+.tip, .tip a {
+  color: grey;
+  font-size: 11pt;
 }
 
 body {
