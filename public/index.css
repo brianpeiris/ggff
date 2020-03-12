@@ -66,7 +66,8 @@ body {
 }
 
 .short-link {
-  display: block;
+  display: inline-block;
+  margin-bottom: 1em;
   font-size: 18pt;
 }
 
