@@ -7,7 +7,11 @@ function LinkInfo({ id, url, expires }) {
   const minutesLeft = Math.floor((expires - Date.now()) / 1000 / 60);
   return (
     <>
-      <a href={`/${id}`}>ggff.io/{id}</a> expires in {minutesLeft} minute{minutesLeft === 1 ? "" : "s"}
+      <a className="short-link" href={`/${id}`}>
+        ggff.io/{id}
+      </a>
+      <br />
+      expires in {minutesLeft} minute{minutesLeft === 1 ? "" : "s"}
       <br />
       it points to{" "}
       <a className="info-link" href={url}>

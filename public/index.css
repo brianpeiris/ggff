@@ -46,6 +46,11 @@ p {
   font-size: 11pt;
 }
 
+.tip {
+  display: inline-block;
+  padding: 0 2em;
+}
+
 .tip, .tip a {
   color: grey;
   font-size: 11pt;
@@ -58,6 +63,11 @@ body {
   padding-top: 1em;
   text-align: center;
   line-height: 2em;
+}
+
+.short-link {
+  display: block;
+  font-size: 18pt;
 }
 
 .info-link {
