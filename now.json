@@ -10,5 +10,8 @@
     { "src": "/[^+]+\\+$", "dest": "/api/views/plus.js" },
     { "src": "/[^+]+", "dest": "/api/views/redirect.js" },
     { "src": "/", "dest": "/api/views/create.js" }
-  ]
+  ],
+  "env": {
+    "MONGODB_URI": "@mongodb-uri"
+  }
 }
