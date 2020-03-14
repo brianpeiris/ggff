@@ -1,6 +1,8 @@
 const { getDB, pruneExpired } = require("../db.js");
 const { generateId } = require("../utils.js");
 
+const EXPIRY_MINUTES = 6;
+
 async function createLink(url) {
   await pruneExpired();
   const db = await getDB();
@@ -13,7 +15,7 @@ async function createLink(url) {
     id = generateId(currentCount);
   }
 
-  await links.insertOne({ id, url, expires: Date.now() + 6 * 60 * 1000 });
+  await links.insertOne({ id, url, expires: Date.now() + EXPIRY_MINUTES * 60 * 1000 });
 
   return id;
 }

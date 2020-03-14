@@ -1,5 +1,5 @@
-const consonants = Array.from("bcdfghjkmnpqrstvwxyz");
-const vowels = Array.from("aeiou");
+const consonants = "bcdfghjkmnpqrstvwxyz";
+const vowels = "aeiou";
 
 function choose(arr) {
   return arr[Math.floor(Math.random() * arr.length)];

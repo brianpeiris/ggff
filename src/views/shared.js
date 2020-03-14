@@ -8,6 +8,4 @@ function renderApp(contents) {
   return appTemplate.replace("<!--CONTENTS-->", ReactDOMServer.renderToStaticMarkup(<main>{contents}</main>));
 }
 
-module.exports = {
-  renderApp
-};
+module.exports = { renderApp };

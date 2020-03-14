@@ -1,9 +1,7 @@
 const { MongoClient } = require("mongodb");
 
 const mongoUri = process.env.MONGODB_URI || "mongodb://localhost:27017/ggff";
-
 let client;
-
 async function getDB() {
   if (!client) {
     client = await MongoClient.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -18,7 +16,4 @@ async function pruneExpired() {
   });
 }
 
-module.exports = {
-  getDB,
-  pruneExpired
-};
+module.exports = { getDB, pruneExpired };

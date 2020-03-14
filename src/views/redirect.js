@@ -3,7 +3,7 @@ const { renderApp } = require("./shared.js");
 
 module.exports = async (req, res) => {
   await pruneExpired();
-  const id = req.query.code || req.url.substring(1);
+  const id = (req.query && req.query.code) || (req.body && req.body.code) || req.url.substring(1);
   const db = await getDB();
   const { url } = (await db.collection("links").findOne({ id })) || {};
   if (url) {
