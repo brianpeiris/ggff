@@ -13,7 +13,7 @@ async function getDB() {
 
 async function pruneExpired() {
   const db = await getDB();
-  const { deletedCount } = await db.collection("links").deleteMany({
+  await db.collection("links").deleteMany({
     expires: { $lt: Date.now() }
   });
 }

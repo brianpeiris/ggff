@@ -5,8 +5,8 @@ const { choose } = require("../utils.js");
 
 const tips = [
   <>
-    you can shorten a link in your address bar by prepending "ggff.io/" to it. for example, ggff.io/https://example.com
-    or ggff.io/example.com
+    you can shorten a link in your address bar by prepending &quot;ggff.io/&quot; to it. for example,
+    ggff.io/https://example.com or ggff.io/example.com
   </>,
   <>
     bookmark <a href="/enter">ggff.io/enter</a> to enter shortened codes more easily
