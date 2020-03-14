@@ -12,7 +12,7 @@ const tips = [
     bookmark <a href="/enter">ggff.io/enter</a> to enter shortened codes more easily
   </>,
   <>
-    use the <a href="javascript:void(location.href='https://ggff.io/'+location.href)">ggff</a> bookmarklet to
+    use the <a href="javascript:void(window.open('https://ggff.io/'+location.href))">ggff</a> bookmarklet to
     automatically shorten your current tab
   </>
 ];
