@@ -1,5 +1,5 @@
-import test from "ava";
-import { generateId } from "./utils.js";
+const test = require("ava");
+const { generateId } = require("./src/utils.js");
 
 test("generateId", t => {
   const id = generateId(10);
