@@ -2,6 +2,7 @@
   "routes": [
     { "src": "/index.css", "dest": "/index.css" },
     { "src": "/favicon.ico", "dest": "/favicon.ico" },
+    { "src": "/robots.txt", "dest": "/robots.txt" },
     { "src": "/api/actions/create", "dest": "/api/actions/create.js" },
     { "src": "/enter", "dest": "/api/views/enter.js" },
     { "src": "/info", "dest": "/api/views/info.js" },
