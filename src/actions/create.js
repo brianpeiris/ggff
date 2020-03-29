@@ -21,7 +21,7 @@ async function createLink(url) {
 }
 
 module.exports = async (req, res) => {
-  let url = (req.query.url || req.body.url).trim();
+  let url = (req.body && req.body.url) || req.url.substring(1);
   if (/https?:\/[^/]/.test(url)) {
     url = url.replace(":/", "://");
   }
