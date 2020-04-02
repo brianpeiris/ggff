@@ -5,7 +5,7 @@ const { renderApp } = require("./shared.js");
 function EnterForm() {
   return (
     <form action="/api/views/redirect" method="post">
-      <input required type="text" name="code" placeholder="enter a code" autoFocus />
+      <input is="no-caps" type="text" required name="code" placeholder="enter a code" autoFocus autoComplete="off" />
       <button type="submit">go</button>
     </form>
   );

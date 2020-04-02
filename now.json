@@ -1,5 +1,6 @@
 {
   "routes": [
+    { "src": "/no-caps.js", "dest": "/no-caps.js" },
     { "src": "/index.css", "dest": "/index.css" },
     { "src": "/favicon.ico", "dest": "/favicon.ico" },
     { "src": "/robots.txt", "dest": "/robots.txt" },
