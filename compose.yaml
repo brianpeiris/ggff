@@ -1,8 +1,15 @@
 services:
   app:
+    restart: always
     build: .
     init: true
     ports:
       - "5000:5000"
   mongo:
+    restart: always
     image: mongo:8.3-noble
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
