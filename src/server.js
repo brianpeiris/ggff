@@ -42,7 +42,7 @@ fastify.get('/', async (request, reply) => {
 
 fastify.get('/*', async (request, reply) => {
   const url = request.url.substring(1);
-  if (/^https?:\//.test(url) || /.+\..+/.test(url)) {
+  if (/^https?:\//.test(url) || /[^/]+\.[^/]+/.test(url)) {
     await createAction(request, reply);
   } else if (url.endsWith("+")) {
     await plus(request, reply);
