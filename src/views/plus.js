@@ -1,7 +1,7 @@
-const React = require("react");
+import React from "react";
 
-const { getDB, pruneExpired } = require("../db.js");
-const { renderApp } = require("./shared.js");
+import { getDB, pruneExpired } from "../db.js";
+import { renderApp } from "./shared.js";
 
 function LinkInfo({ id, url, expires }) {
   const minutesLeft = Math.floor((expires - Date.now()) / 1000 / 60);
@@ -21,14 +21,14 @@ function LinkInfo({ id, url, expires }) {
   );
 }
 
-module.exports = async function(req, res) {
+export default async function(request, reply) {
   await pruneExpired();
-  const id = req.url.match(/\/([^+]+)\+$/)[1];
+  const id = request.url.match(/\/([^+]+)\+$/)[1];
   const db = await getDB();
   const link = await db.collection("links").findOne({ id });
   if (link) {
-    res.status(200).send(renderApp(<LinkInfo {...link} />));
+    reply.type("text/html").send(renderApp(<LinkInfo {...link} />));
   } else {
-    res.status(404).send(renderApp("404 - Link not found"));
+    reply.code(404).type("text/html").send(renderApp("404 - Link not found"));
   }
 };

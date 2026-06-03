@@ -1,11 +1,11 @@
 const consonants = "bcdfghjkmnpqrstvwxyz";
 const vowels = "aeiou";
 
-function choose(arr) {
+export function choose(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
-function generateId(currentCount) {
+export function generateId(currentCount) {
   let charCount = 2;
   let capacity = consonants.length * vowels.length;
   let id = choose(consonants) + choose(vowels);
@@ -21,5 +21,3 @@ function generateId(currentCount) {
   }
   return id;
 }
-
-module.exports = { choose, generateId };

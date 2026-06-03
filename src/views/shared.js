@@ -1,11 +1,9 @@
-const React = require("react");
-const ReactDOMServer = require("react-dom/server");
+import React from "react";
+import ReactDOMServer from "react-dom/server.js";
+import fs from "node:fs";
 
-const fs = require("fs");
-const appTemplate = fs.readFileSync(__dirname + "/../../index.html", "utf8");
+const appTemplate = fs.readFileSync(import.meta.dirname + "/../../index.html", "utf8");
 
-function renderApp(contents) {
+export function renderApp(contents) {
   return appTemplate.replace("<!--CONTENTS-->", ReactDOMServer.renderToStaticMarkup(<main>{contents}</main>));
 }
-
-module.exports = { renderApp };

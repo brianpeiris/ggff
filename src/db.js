@@ -1,19 +1,17 @@
-const { MongoClient } = require("mongodb");
+import {default as mongodb} from "mongodb";
 
-const mongoUri = process.env.MONGODB_URI || "mongodb://localhost:27017/ggff";
+const mongoUri = "mongodb://mongo:27017/ggff";
 let client;
-async function getDB() {
+export async function getDB() {
   if (!client) {
-    client = await MongoClient.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true });
+    client = await mongodb.MongoClient.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true });
   }
   return client.db();
 }
 
-async function pruneExpired() {
+export async function pruneExpired() {
   const db = await getDB();
   await db.collection("links").deleteMany({
     expires: { $lt: Date.now() }
   });
 }
-
-module.exports = { getDB, pruneExpired };

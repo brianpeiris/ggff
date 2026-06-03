@@ -1,7 +1,7 @@
-const React = require("react");
+import React from "react";
 
-const { renderApp } = require("./shared.js");
-const { choose } = require("../utils.js");
+import { renderApp } from "./shared.js";
+import { choose } from "../utils.js";
 
 const tips = [
   <>
@@ -19,7 +19,7 @@ const tips = [
 function CreateForm() {
   return (
     <>
-      <form action="/api/actions/create" method="post">
+      <form action="/api/create" method="post">
         <input
           required
           pattern=" *[^ ]+ *"
@@ -37,6 +37,6 @@ function CreateForm() {
   );
 }
 
-module.exports = (req, res) => {
-  res.status(200).send(renderApp(<CreateForm />));
+export default () => {
+  return renderApp(<CreateForm />);
 };

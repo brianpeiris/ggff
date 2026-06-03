@@ -1,5 +1,5 @@
-const { getDB, pruneExpired } = require("../db.js");
-const { generateId } = require("../utils.js");
+import { getDB, pruneExpired } from "../db.js";
+import { generateId } from "../utils.js";
 
 const EXPIRY_MINUTES = 6;
 
@@ -20,8 +20,8 @@ async function createLink(url) {
   return id;
 }
 
-module.exports = async (req, res) => {
-  let url = (req.body && req.body.url) || req.url.substring(1);
+export default async (request, reply) => {
+  let url = (request.body && request.body.url) || request.url.substring(1);
   if (/https?:\/[^/]/.test(url)) {
     url = url.replace(":/", "://");
   }
@@ -30,7 +30,5 @@ module.exports = async (req, res) => {
   }
   const id = await createLink(url);
 
-  res.status(302);
-  res.setHeader("location", `/${id}+`);
-  res.send();
+  reply.redirect(`/${id}+`);
 };

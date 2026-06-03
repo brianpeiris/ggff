@@ -1,15 +1,14 @@
-const { getDB, pruneExpired } = require("../db.js");
-const { renderApp } = require("./shared.js");
+import { getDB, pruneExpired } from "../db.js";
+import { renderApp } from "./shared.js";
 
-module.exports = async (req, res) => {
+export default async (request, reply) => {
   await pruneExpired();
-  const id = (req.query && req.query.code) || (req.body && req.body.code) || req.url.substring(1);
+  const id = (request.query && request.query.code) || (request.body && request.body.code) || request.url.substring(1);
   const db = await getDB();
   const { url } = (await db.collection("links").findOne({ id })) || {};
   if (url) {
-    res.setHeader("Location", new URL(url).href);
-    res.status(301).send("");
+    reply.redirect(new URL(url).href, 302);
   } else {
-    res.status(404).send(renderApp("404 - link not found"));
+    reply.code(404).type("text/html").send(renderApp("404 - link not found"));
   }
 };

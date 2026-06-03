@@ -1,16 +1,16 @@
-const React = require("react");
+import React from "react";
 
-const { renderApp } = require("./shared.js");
+import { renderApp } from "./shared.js";
 
 function EnterForm() {
   return (
-    <form action="/api/views/redirect" method="post">
+    <form action="/api/redirect" method="post">
       <input is="no-caps" type="text" required name="code" placeholder="enter a code" autoFocus autoComplete="off" />
       <button type="submit">go</button>
     </form>
   );
 }
 
-module.exports = (req, res) => {
-  res.status(200).send(renderApp(<EnterForm />));
+export default () => {
+  return renderApp(<EnterForm />);
 };
