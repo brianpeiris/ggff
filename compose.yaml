@@ -7,9 +7,9 @@ services:
       - "5000:5000"
   mongo:
     restart: always
-    image: mongo:8.3-noble
+    image: mongo:7.0-jammy
     volumes:
-      - mongo-data:/data/db
+      - mongo-data-db:/data/db
 
 volumes:
-  mongo-data:
+  mongo-data-db:
